@@ -4,8 +4,7 @@ n = int(input())
 array = []
 for _ in range(n):
   # 시작 시간, 끝나는 시간, 회의 인원 입력
-  data = list(map(int, input().split()))
-  array.append(data)
+  array.append(list(map(int, input().split())))
 
 # 시작 시간 기준 오름차순 정렬
 array.sort()
