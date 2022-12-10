@@ -1,7 +1,6 @@
 import sys
 input = sys.stdin.readline
 
-consonant = set(['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'])
 vowel = set(['a', 'e', 'i', 'o', 'u'])
 while 1:
     password = input().strip()
@@ -10,10 +9,10 @@ while 1:
 
     condition1, condition2_con, condition2_vow, condition3 = False, 0, 0, False
     for i, char in enumerate(password):
-        if char in ['a', 'e', 'i', 'o', 'u']:
+        if char in vowel:
             condition1 = True
 
-        if char in consonant:
+        if char not in vowel:
             condition2_vow = 0
             condition2_con += 1
             if condition2_con == 3:
