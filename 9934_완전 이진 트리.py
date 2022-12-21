@@ -8,19 +8,14 @@ level = [[] for _ in range(k)]
 
 def inorder(i, start, end):
     if start == end:
-        level[i].append(nums[start])
+        level[i].append(str(nums[start]))
         return
 
     mid = (start + end) // 2
     inorder(i + 1, start, mid - 1)
-    level[i].append(nums[mid])
+    level[i].append(str(nums[mid]))
     inorder(i + 1, mid + 1, end)
 
 
 inorder(0, 0, len(nums) - 1)
-result = ''
-for i in range(k):
-    for l in level[i]:
-        result += str(l) + ' '
-    result += '\n'
-print(result)
+print('\n'.join(' '.join(i) for i in level))
