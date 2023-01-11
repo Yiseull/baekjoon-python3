@@ -2,30 +2,17 @@ import sys
 from math import ceil
 input = sys.stdin.readline
 
-n, power = map(int, input().split())
+n, atk = map(int, input().split())
 info = [list(map(int, input().split())) for _ in range(n)]
-left, right, result = 1, 123455876544000001, 123455876544000001
-while left <= right:
-    hp = mid = (left + right) // 2
-    atk = power
-    for t, a, h in info:
-        if t == 1:
-            cnt1, cnt2 = ceil(h / atk), ceil(hp / a)
-            if cnt1 > cnt2:
-                hp = -1
-                break
-            else:
-                hp -= (cnt1 - 1) * a
-        else:
-            atk += a
-            hp += h
-            if hp > mid:
-                hp = mid
-
-    if hp > 0:
-        right = mid - 1
-        result = min(result, mid)
+hp, max_hp = 0, 0
+for t, a, h in info:
+    if t == 1:
+        hp += (ceil(h / atk) - 1) * a
     else:
-        left = mid + 1
+        max_hp = max(max_hp, hp)
+        atk += a
+        hp -= h
+        if hp < 0:
+            hp = 0
 
-print(result)
+print(max(max_hp, hp) + 1)
