@@ -1,0 +1,16 @@
+import sys
+input = sys.stdin.readline
+
+n, k = map(int, input().split())
+coins = [int(input()) for _ in range(n)]
+
+dp = [0] * (k + 1)
+coins.sort()
+for coin in coins:
+    if coin > k:
+        break
+    dp[coin] += 1
+    for i in range(coin + 1, k + 1):
+        dp[i] += dp[i - coin]
+
+print(dp[k])
