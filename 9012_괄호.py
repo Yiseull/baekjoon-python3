@@ -1,7 +1,8 @@
 import sys
 input = sys.stdin.readline
 
-for _ in range(int(input())):
+t = int(input())
+for _ in range(t):
     ps = input().strip()
 
     stack = []
@@ -15,7 +16,4 @@ for _ in range(int(input())):
             else:
                 stack.pop()
 
-    if stack:
-        print('NO')
-    else:
-        print('YES')
+    print('NO' if stack else 'YES')
