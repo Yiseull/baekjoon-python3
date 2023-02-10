@@ -1,19 +1,12 @@
 import sys
-input = sys.stdin.readline
+ps = sys.stdin.readlines()[1:]
 
-t = int(input())
-for _ in range(t):
-    ps = input().strip()
+for i in ps:
+    i = i.rstrip()
+    while '()' in i:
+        i = i.replace('()', '')
 
-    stack = []
-    for i in ps:
-        if i == '(':
-            stack.append(i)
-        else:
-            if not stack or stack[-1] != '(':
-                stack.append(0)
-                break
-            else:
-                stack.pop()
-
-    print('NO' if stack else 'YES')
+    if i:
+        print('NO')
+    else:
+        print('YES')
