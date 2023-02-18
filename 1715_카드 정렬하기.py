@@ -1,15 +1,10 @@
-import sys
 from heapq import *
-input = sys.stdin.readline
 
-n = int(input())
-card = [int(input()) for _ in range(n)]
+n, *card = map(int, open(0))
 heapify(card)
 result = 0
-while len(card) != 1:
-    a = heappop(card)
-    b = heappop(card)
-    cnt = a + b
+for _ in range(n - 1):
+    cnt = heappop(card) + heappop(card)
     result += cnt
     heappush(card, cnt)
 print(result)
