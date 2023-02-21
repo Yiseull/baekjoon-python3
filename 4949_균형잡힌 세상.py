@@ -1,4 +1,5 @@
 import sys
+from collections import Counter
 input = sys.stdin.readline
 
 while 1:
@@ -6,21 +7,19 @@ while 1:
     if s == '.':
         break
 
-    stack = []
+    if s.count('(') != s.count(')') or s.count('[') != s.count(']'):
+        print('no')
+        continue
+
+    stack = ''
     for i in s:
-        if i == '(' or i == '[':
-            stack.append(i)
-        elif i == ')':
-            if not stack or stack[-1] != '(':
-                stack.append(0)
-                break
-            else:
-                stack.pop()
-        elif i == ']':
-            if not stack or stack[-1] != '[':
-                stack.append(0)
-                break
-            else:
-                stack.pop()
+        if i in '()[]':
+            stack += i
+
+    while '()' in stack or '[]' in stack:
+        if '()' in stack:
+            stack = stack.replace('()', '')
+        if '[]' in stack:
+            stack = stack.replace('[]', '')
 
     print('no' if stack else 'yes')
