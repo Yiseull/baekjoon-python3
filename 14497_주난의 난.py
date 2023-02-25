@@ -13,7 +13,7 @@ def dijkstra():
         for dx, dy in [[0, 1], [0, -1], [1, 0], [-1, 0]]:
             next_x = x + dx
             next_y = y + dy
-            if 0 <= next_x < n and 0 <= next_y < m:
+            if 0 <= next_x < n and 0 <= next_y < m and visited[next_x][next_y] == 600:
                 if next_x == x2 and next_y == y2:
                     return visited[x][y] + 1
                 if room[next_x][next_y] == '1':
