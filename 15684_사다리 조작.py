@@ -21,16 +21,19 @@ def fix_ladder(i, j, cnt):
         return
 
     global result
-    if cnt > 3 or cnt >= result:
+    if cnt >= result:
         return
 
     if check_ladder():
         result = min(result, cnt)
         return
 
+    if cnt > 2:
+        return
+
     for ver in range(i, n - 1):
         for hor in range(j, h):
-            if line[hor][ver] or line[hor][ver - 1] or (ver < n - 1 and line[hor][ver + 1]):
+            if line[hor][ver] or line[hor][ver - 1] or line[hor][ver + 1]:
                 continue
             line[hor][ver] = 1
             fix_ladder(ver, hor, cnt + 1)
