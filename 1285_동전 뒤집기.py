@@ -22,7 +22,5 @@ for bit in range(1 << n):
                 cnt += 1
         total += min(cnt, n - cnt)
     result = min(result, total)
-    if result == 2:
-        break
 
 print(result)
