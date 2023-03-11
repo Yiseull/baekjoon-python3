@@ -8,10 +8,8 @@ def print_per(num, s):
         return
 
     for i in range(num, n + 1):
-        if i == 0:
-            continue
         print_per(i, s + str(i) + ' ')
 
 
 n, m = map(int, input().split())
-print_per(0, '')
+print_per(1, '')
