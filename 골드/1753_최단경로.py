@@ -40,9 +40,5 @@ for _ in range(E):
 # 다익스트라 수행
 dijkstra(k)
 
-# 각 정점으로의 최단 경로값 출력
-for i in range(1, V + 1):
-    if distance[i] == INF:
-        print('INF')
-    else:
-        print(distance[i])
+for dist in distance[1:]:
+    print('INF' if dist == INF else dist)

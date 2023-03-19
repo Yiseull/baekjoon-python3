@@ -25,6 +25,7 @@ Python3
 + 1916번: [최소비용 구하기](https://github.com/Yiseull/baekjoon-python3/blob/master/1916_%EC%B5%9C%EC%86%8C%EB%B9%84%EC%9A%A9%20%EA%B5%AC%ED%95%98%EA%B8%B0.py)
 + 1931번: [회의실 배정](https://github.com/Yiseull/baekjoon-python3/blob/master/%ED%9A%8C%EC%9D%98%EC%8B%A4%20%EB%B0%B0%EC%A0%95.py)
 + 1940번: [주몽](https://github.com/Yiseull/baekjoon-python3/blob/master/1940_%EC%A3%BC%EB%AA%BD.py)
++ 1941번: [소문난 칠공주](https://github.com/Yiseull/baekjoon-python3/blob/master/1941_%EC%86%8C%EB%AC%B8%EB%82%9C%20%EC%B9%A0%EA%B3%B5%EC%A3%BC.py)
 + 1987번: [알파벳](https://github.com/Yiseull/baekjoon-python3/blob/master/1987_%EC%95%8C%ED%8C%8C%EB%B2%B3.py)
 + 1992번: [쿼드트리](https://github.com/Yiseull/baekjoon-python3/blob/master/1992_%EC%BF%BC%EB%93%9C%ED%8A%B8%EB%A6%AC.py)
 + 2109번: [순회강연](https://github.com/Yiseull/baekjoon-python3/blob/master/2109_%EC%88%9C%ED%9A%8C%EA%B0%95%EC%97%B0.py)
