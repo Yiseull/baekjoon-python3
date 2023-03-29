@@ -1,17 +1,4 @@
-import sys
-input = sys.stdin.readline
-
-
-def main() -> None:
-    n = int(input())
-    if n == 1:
-        print(1)
-    else:
-        dp = [0] * n
-        dp[0], dp[1] = 1, 2
-        for i in range(2, n):
-            dp[i] = (dp[i - 1] + dp[i - 2]) % 10007
-        print(dp[n - 1])
-
-
-main()
+a = b = 1
+for _ in range(int(input())):
+    a, b = b, a + b
+print(a % 10007)
