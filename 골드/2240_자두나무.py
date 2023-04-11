@@ -3,25 +3,26 @@ input = sys.stdin.readline
 
 
 def solution() -> None:
-    T, W = map(int, input().split())
-    trees = [int(input()) for _ in range(T)]
-    dp = [[0 for _ in range(W + 1)] for _ in range(2)]
-    for t in range(1, T + 1):
-        for w in range(W + 1):
-            if trees[t - 1] == 1:
-                if w == 0:
+    t, w = map(int, input().split())
+    trees = [int(input()) for _ in range(t)]
+    dp = [[0 for _ in range(2)] for _ in range(w + 1)]
+
+    for tree in trees:
+        for i in range(w + 1):
+            if tree == 1:
+                if i == 0:
                     dp[0][0] += 1
                 else:
-                    dp[0][w] = max(dp[0][w], dp[1][w - 1]) + 1
-                    dp[1][w] = max(dp[0][w - 1], dp[1][w])
+                    dp[i][0] = max(dp[i][0], dp[i - 1][1]) + 1
+                    dp[i][1] = max(dp[i - 1][0], dp[i][1])
             else:
-                if w == 0:
+                if i == 0:
                     continue
                 else:
-                    dp[0][w] = max(dp[0][w], dp[1][w - 1])
-                    dp[1][w] = max(dp[0][w - 1], dp[1][w]) + 1
+                    dp[i][0] = max(dp[i][0], dp[i - 1][1])
+                    dp[i][1] = max(dp[i - 1][0], dp[i][1]) + 1
 
-    print(max(dp[0][W], dp[1][W]))
+    print(max(dp[w]))
 
 
 solution()
