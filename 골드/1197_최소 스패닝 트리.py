@@ -20,7 +20,7 @@ def union(parent, a, b) -> None:
 
 if __name__ == '__main__':
     v, e = map(int, input().split())
-    edges = [list(map(int, input().split())) for _ in range(e)]
+    edges = [tuple(map(int, input().split())) for _ in range(e)]
     parent = [i for i in range(v + 1)]
     result = 0
 
