@@ -22,7 +22,7 @@ if __name__ == '__main__':
     v, e = map(int, input().split())
     edges = [tuple(map(int, input().split())) for _ in range(e)]
     parent = [i for i in range(v + 1)]
-    result = 0
+    result, cnt = 0, 0
 
     edges.sort(key=lambda x: x[2])
 
@@ -30,5 +30,8 @@ if __name__ == '__main__':
         if find(parent, a) != find(parent, b):
             union(parent, a, b)
             result += c
+            cnt += 1
+            if cnt == v:
+                break
 
     print(result)
