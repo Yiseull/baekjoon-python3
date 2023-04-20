@@ -31,7 +31,7 @@ if __name__ == '__main__':
             union(parent, a, b)
             result += c
             cnt += 1
-            if cnt == v:
+            if cnt == v - 1:
                 break
 
     print(result)
