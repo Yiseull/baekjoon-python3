@@ -6,7 +6,7 @@ input = sys.stdin.readline
 def solution() -> None:
     n = int(input())
     meeting = [tuple(map(int, input().split())) for _ in range(n)]
-    meeting.sort()
+    meeting.sort(key=lambda x: x[0])
     proceeding, finished = [], []
 
     for start, end, people in meeting:
