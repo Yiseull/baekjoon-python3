@@ -9,14 +9,7 @@ import sys
 input = sys.stdin.readline
 
 
-def check(s, e, schedule) -> bool:
-    for si, ei in schedule:
-        if si <= s <= ei or si <= e <= ei or s <= si <= e or s <= ei <= e:
-            return False
-    return True
-
-
-def solution(idx, total) -> None:
+def solution(idx, total, before) -> None:
     if total > k:
         return
 
@@ -26,20 +19,17 @@ def solution(idx, total) -> None:
         return
 
     for i in range(idx, n):
-        w, s, e = lectures[i]
-        if w == 5:
+        if lectures[i][0] == 5:
             continue
-
-        if check(s, e, schedule[w - 1]):
-            new_schedule = schedule[w - 1][:]
-            schedule[w - 1].append((s, e))
-            solution(i + 1, total + e - s + 1)
-            schedule[w - 1] = new_schedule
+        if before != -1 and lectures[before][0] == lectures[i][0] and lectures[before][2] >= lectures[i][1]:
+            continue
+        solution(i + 1, total + lectures[i][2] - lectures[i][1] + 1, i)
 
 
-n, k = map(int, input().split())
-lectures = [tuple(map(int, input().split())) for _ in range(n)]
-schedule = [[] for _ in range(4)]
-answer = 0
-solution(0, 0)
-print(answer)
+if __name__ == '__main__':
+    n, k = map(int, input().split())
+    lectures = [tuple(map(int, input().split())) for _ in range(n)]
+    lectures.sort(key=lambda x: (x[0], x[1], x[2]))
+    answer = 0
+    solution(0, 0, -1)
+    print(answer)
