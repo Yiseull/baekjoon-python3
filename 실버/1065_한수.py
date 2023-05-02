@@ -8,10 +8,13 @@ def han_num(x) -> bool:
     return True
 
 
-def main() -> None:
+def main() -> int:
     n = int(input())
-    answer = 0
-    for i in range(1, n + 1):
+    if n < 100:
+        return n
+
+    answer = 99
+    for i in range(100, n + 1):
         if i < 10:
             answer += 1
             continue
@@ -19,7 +22,7 @@ def main() -> None:
         if han_num(i):
             answer += 1
 
-    print(answer)
+    return answer
 
 
-main()
+print(main())
