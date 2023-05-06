@@ -1,9 +1,5 @@
-from bisect import bisect_left, bisect_right
+from collections import Counter
 from itertools import combinations
-
-
-def count(subset, target) -> int:
-    return bisect_right(subset, target) - bisect_left(subset, target)
 
 
 def calc_subset(set, subset, n) -> None:
@@ -13,23 +9,22 @@ def calc_subset(set, subset, n) -> None:
 
 
 def solve() -> int:
-    x = []
-    y = []
+    x = [0]
+    y = [0]
 
     calc_subset(seq[:n // 2], x, n // 2)
     calc_subset(seq[n // 2:], y, n - n // 2)
 
-    x.sort()
-    y.sort()
+    x = Counter(x)
+    y = Counter(y)
 
-    cnt = 0
+    answer = 0
     for i in x:
-        cnt += count(y, s - i)
+        target = s - i
+        if target in y:
+            answer += x[i] * y[target]
 
-    cnt += count(x, s)
-    cnt += count(y, s)
-
-    return cnt
+    return answer if s != 0 else answer - 1
 
 
 if __name__ == '__main__':
