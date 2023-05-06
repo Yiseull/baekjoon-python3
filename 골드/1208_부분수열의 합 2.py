@@ -1,22 +1,18 @@
 from collections import Counter
-from itertools import combinations
 
 
-def calc_subset(set, subset, n) -> None:
-    for i in range(1, n + 1):
-        for comb in combinations(set, i):
-            subset.append(sum(comb))
+def calc_subset(set) -> Counter:
+    subset = [0]
+    for i in set:
+        tmp = [i + j for j in subset]
+        subset += tmp
+
+    return Counter(subset)
 
 
 def solve() -> int:
-    x = [0]
-    y = [0]
-
-    calc_subset(seq[:n // 2], x, n // 2)
-    calc_subset(seq[n // 2:], y, n - n // 2)
-
-    x = Counter(x)
-    y = Counter(y)
+    x = calc_subset(seq[:n // 2])
+    y = calc_subset(seq[n // 2:])
 
     answer = 0
     for i in x:
