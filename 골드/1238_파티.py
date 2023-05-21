@@ -4,9 +4,8 @@ input = sys.stdin.readline
 INF = int(1e9)
 
 
-def dijkstra(start, distance):
-    q = []
-    heapq.heappush(q, (0, start))
+def dijkstra(start, distance, graph):
+    q = [(0, start)]
     distance[start] = 0
     while q:
         dist, now = heapq.heappop(q)
@@ -20,21 +19,17 @@ def dijkstra(start, distance):
 
 
 n, m, x = map(int, input().split())
-distance = [INF] * (n + 1)
-graph = [[] for _ in range(n + 1)]
-answer = 0
+distance1 = [INF] * (n + 1)
+distance2 = [INF] * (n + 1)
+graph1 = [[] for _ in range(n + 1)]
+graph2 = [[] for _ in range(n + 1)]
 
 for _ in range(m):
     a, b, t = map(int, input().split())
-    graph[a].append((b, t))
+    graph1[a].append((b, t))
+    graph2[b].append((a, t))
 
-dijkstra(x, distance)
+dijkstra(x, distance1, graph1)
+dijkstra(x, distance2, graph2)
 
-for i in range(1, n + 1):
-    if i == x:
-        continue
-    distance2 = [INF] * (n + 1)
-    dijkstra(i, distance2)
-    answer = max(answer, distance[i] + distance2[x])
-
-print(answer)
+print(max(distance1[i] + distance2[i] for i in range(1, n + 1)))
