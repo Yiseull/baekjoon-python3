@@ -4,19 +4,17 @@ input = sys.stdin.readline
 
 for _ in range(int(input())):
     n = int(input())
-    rankings = sorted([tuple(map(int, input().split())) for _ in range(n)], key=lambda x: x[0])
-    answer = 0
-    min_rank = 0
-    for i, ranking in enumerate(rankings):
-        if i == 0:
-            answer += 1
-            min_rank = ranking[1]
-            continue
+    rankings = [0] * (n + 1)
+    for _ in range(n):
+        a, b = map(int, input().split())
+        rankings[a] = b
 
-        if min_rank < ranking[1]:
+    answer = 1
+    min_rank = rankings[1]
+    for i in range(2, n + 1):
+        if min_rank < rankings[i]:
             continue
-
-        min_rank = min(min_rank, ranking[1])
+        min_rank = min(min_rank, rankings[i])
         answer += 1
 
     print(answer)
